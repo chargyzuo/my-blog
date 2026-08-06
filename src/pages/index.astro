@@ -3,6 +3,37 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const projects = [
+	{
+		name: 'Home Lab / EVE-NG Topology',
+		desc: 'A multi-vendor lab (Cisco, Juniper, Arista) for BGP, OSPF, MPLS L3VPN and segment routing practice.',
+		tags: ['BGP', 'MPLS', 'EVE-NG', 'Segment Routing'],
+	},
+	{
+		name: 'Network Automation Toolkit',
+		desc: 'Ansible + Python (Netmiko / NAPALM) playbooks for zero-touch provisioning and config backup.',
+		tags: ['Ansible', 'Python', 'Netmiko', 'NAPALM'],
+	},
+	{
+		name: 'Observability Stack',
+		desc: 'Telemetry pipeline with SNMP, gNMI, Telegraf, InfluxDB and Grafana dashboards for the WAN edge.',
+		tags: ['gNMI', 'Telegraf', 'Grafana', 'SNMP'],
+	},
+	{
+		name: 'Secure SD-WAN Design',
+		desc: 'Reference design for a hub-and-spoke SD-WAN overlay with IPsec, zone-based firewall and QoS.',
+		tags: ['SD-WAN', 'IPsec', 'QoS', 'Firewall'],
+	},
+];
+
+const skills = [
+	{ area: 'Routing & Switching', detail: 'BGP · OSPF · IS-IS · EVPN/VXLAN · STP' },
+	{ area: 'Automation', detail: 'Python · Ansible · Netmiko · NAPALM · Nornir' },
+	{ area: 'Security', detail: 'IPsec · Zone-Based FW · 802.1X · ACL/NAC' },
+	{ area: 'Cloud & DC', detail: 'AWS VPC · Terraform · Spine-Leaf · MLAG' },
+	{ area: 'Monitoring', detail: 'gNMI · SNMP · Grafana · Wireshark · Netflow' },
+];
 ---
 
 <!doctype html>
@@ -13,35 +44,64 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
+			<section class="terminal">
+				<div class="terminal-bar">
+					<span class="dot red"></span>
+					<span class="dot yellow"></span>
+					<span class="dot green"></span>
+					<span class="title">whoami — netops.sh</span>
+				</div>
+				<div class="terminal-body">
+					<div class="prompt">whoami</div>
+					<div class="out">Network Engineer — routing, switching &amp; automation.</div>
+					<div class="prompt">cat ./mission.txt</div>
+					<div class="out">
+						I design, operate and automate resilient networks — from the
+						campus edge to the data-center fabric. This is where I write down
+						what I learn along the way.
+					</div>
+					<div class="prompt">ls ./focus/</div>
+					<div class="out">
+						routing/  automation/  security/  observability/  cloud/
+					</div>
+					<div class="prompt">./start_blog.sh<span class="cursor"></span></div>
+				</div>
+			</section>
+
+			<h2 class="section-title">skills --list</h2>
+			<ul class="skill-list">
+				{
+					skills.map((s) => (
+						<li>
+							<span>{s.area}</span>
+							<span>{s.detail}</span>
+						</li>
+					))
+				}
 			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
+
+			<h2 class="section-title">projects --featured</h2>
+			<div class="card-grid">
+				{
+					projects.map((p) => (
+						<article class="card">
+							<h3>{p.name}</h3>
+							<p>{p.desc}</p>
+							<ul class="tags">
+								{p.tags.map((t) => (
+									<li>{t}</li>
+								))}
+							</ul>
+						</article>
+					))
+				}
+			</div>
+
+			<h2 class="section-title">tail -f ./blog</h2>
+			<p class="muted mono">
+				Latest posts, labs and troubleshooting notes live in
+				<a href="/blog">/blog</a>. More on me in
+				<a href="/about">/about</a>.
 			</p>
 		</main>
 		<Footer />
