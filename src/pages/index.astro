@@ -7,7 +7,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 const projects = [
 	{
 		name: 'Home Lab / EVE-NG Topology',
-		desc: 'A multi-vendor lab (Cisco, Juniper, Arista) for BGP, OSPF, MPLS L3VPN and segment routing practice.',
+		desc: 'Multi-vendor lab (Cisco, Juniper, Arista) for BGP, OSPF, MPLS L3VPN and segment routing practice.',
 		tags: ['BGP', 'MPLS', 'EVE-NG', 'Segment Routing'],
 	},
 	{
@@ -34,6 +34,18 @@ const skills = [
 	{ area: 'Cloud & DC', detail: 'AWS VPC · Terraform · Spine-Leaf · MLAG' },
 	{ area: 'Monitoring', detail: 'gNMI · SNMP · Grafana · Wireshark · Netflow' },
 ];
+
+const contents = [
+	{ group: 'Routing Fundamentals', items: [
+		{ title: 'Welcome to netops.sh', href: '/blog/welcome/' },
+		{ title: 'BGP Troubleshooting Cheat Sheet', href: '/blog/bgp-troubleshooting/' },
+		{ title: 'Automating Config Backups', href: '/blog/config-backup-netmiko/' },
+	]},
+	{ group: 'More', items: [
+		{ title: 'All Lessons', href: '/blog' },
+		{ title: 'About Me', href: '/about' },
+	]},
+];
 ---
 
 <!doctype html>
@@ -44,65 +56,77 @@ const skills = [
 	<body>
 		<Header />
 		<main>
-			<section class="terminal">
-				<div class="terminal-bar">
-					<span class="dot red"></span>
-					<span class="dot yellow"></span>
-					<span class="dot green"></span>
-					<span class="title">whoami — netops.sh</span>
+			<div class="breadcrumb">
+				<div class="container">
+					You are here: <a href="/">Home</a> &raquo; Network Engineering
 				</div>
-				<div class="terminal-body">
-					<div class="prompt">whoami</div>
-					<div class="out">Network Engineer — routing, switching &amp; automation.</div>
-					<div class="prompt">cat ./mission.txt</div>
-					<div class="out">
-						I design, operate and automate resilient networks — from the
-						campus edge to the data-center fabric. This is where I write down
-						what I learn along the way.
-					</div>
-					<div class="prompt">ls ./focus/</div>
-					<div class="out">
-						routing/  automation/  security/  observability/  cloud/
-					</div>
-					<div class="prompt">./start_blog.sh<span class="cursor"></span></div>
-				</div>
-			</section>
-
-			<h2 class="section-title">skills --list</h2>
-			<ul class="skill-list">
-				{
-					skills.map((s) => (
-						<li>
-							<span>{s.area}</span>
-							<span>{s.detail}</span>
-						</li>
-					))
-				}
-			</ul>
-
-			<h2 class="section-title">projects --featured</h2>
-			<div class="card-grid">
-				{
-					projects.map((p) => (
-						<article class="card">
-							<h3>{p.name}</h3>
-							<p>{p.desc}</p>
-							<ul class="tags">
-								{p.tags.map((t) => (
-									<li>{t}</li>
-								))}
-							</ul>
-						</article>
-					))
-				}
 			</div>
 
-			<h2 class="section-title">tail -f ./blog</h2>
-			<p class="muted mono">
-				Latest posts, labs and troubleshooting notes live in
-				<a href="/blog">/blog</a>. More on me in
-				<a href="/about">/about</a>.
-			</p>
+			<div class="container">
+				<div class="layout">
+					<article class="article">
+						<h1>Network Engineering, explained simply</h1>
+						<p class="lede">{SITE_DESCRIPTION}</p>
+
+						<p>
+							Welcome. This is my working notebook as a network engineer — the
+							place where I write down how routing and switching actually
+							behave, how I automate the boring parts, and how I troubleshoot
+							when things break at 2 a.m.
+						</p>
+						<p>
+							Everything here is meant to be practical: real CLI output, real
+							configs, and topologies you can rebuild in your own lab. Start
+							with the lessons in the sidebar, or browse the
+							<a href="/blog">full list</a>.
+						</p>
+
+						<h2>Skills</h2>
+						<ul class="skill-list">
+							{skills.map((s) => (
+								<li>
+									<span>{s.area}</span>
+									<span>{s.detail}</span>
+								</li>
+							))}
+						</ul>
+
+						<h2>Featured Projects</h2>
+						<div class="card-grid">
+							{projects.map((p) => (
+								<div class="card">
+									<h3>{p.name}</h3>
+									<p>{p.desc}</p>
+									<ul class="tags">
+										{p.tags.map((t) => <li>{t}</li>)}
+									</ul>
+								</div>
+							))}
+						</div>
+
+						<a class="next-lesson" href="/blog">
+							<strong>Start Reading</strong>
+							Browse all lessons &amp; troubleshooting notes &raquo;
+						</a>
+					</article>
+
+					<aside class="sidebar">
+						<div class="sidebar-box">
+							<h2>Course Contents</h2>
+							{contents.map((c) => (
+								<div>
+									<div class="toc-group">{c.group}</div>
+									<ul>
+										{c.items.map((i) => (
+											<li><a href={i.href}>{i.title}</a></li>
+										))}
+									</ul>
+								</div>
+							))}
+						</div>
+					</aside>
+				</div>
+			</div>
 		</main>
 		<Footer />
 	</body>

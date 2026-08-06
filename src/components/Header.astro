@@ -3,103 +3,148 @@ import { SITE_TITLE, SOCIAL } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
 
+<!-- Top notification bar -->
+<div class="notice-bar">
+	<div class="container">
+		<span>Free network engineering notes, labs &amp; troubleshooting guides.</span>
+		<a href={SOCIAL.github} target="_blank">Follow on GitHub &raquo;</a>
+	</div>
+</div>
+
 <header>
-	<nav>
-		<h2><a href="/"><span class="prompt-sym">~$</span> {SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-		<div class="social-links">
-			<a href={SOCIAL.github} target="_blank">
-				<span class="sr-only">GitHub</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
-					><path
-						fill="currentColor"
-						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
+	<div class="container header-inner">
+		<a href="/" class="brand">{SITE_TITLE}</a>
+		<nav>
+			<ul>
+				<li><HeaderLink href="/">Home</HeaderLink></li>
+				<li><HeaderLink href="/blog">Lessons</HeaderLink></li>
+				<li><HeaderLink href="/about">About</HeaderLink></li>
+				<li><a href={SOCIAL.github} target="_blank">GitHub</a></li>
+				<li><a href={SOCIAL.linkedin} target="_blank">LinkedIn</a></li>
+			</ul>
+		</nav>
+		<form class="search" action="/blog">
+			<input type="search" name="q" placeholder="Search…" aria-label="Search" />
+			<button type="submit" aria-label="Search">
+				<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"
+					><path fill="currentColor" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path></svg
 				>
-			</a>
-			<a href={SOCIAL.linkedin} target="_blank">
-				<span class="sr-only">LinkedIn</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
-					><path
-						fill="currentColor"
-						d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
-					></path></svg
-				>
-			</a>
-			<a href={SOCIAL.email}>
-				<span class="sr-only">Email</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="28" height="28"
-					><path
-						fill="currentColor"
-						d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"
-					></path></svg
-				>
-			</a>
-		</div>
-	</nav>
+			</button>
+		</form>
+	</div>
 </header>
+
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: rgba(9, 12, 20, 0.85);
-		backdrop-filter: blur(6px);
-		border-bottom: 1px solid rgb(var(--border));
-		position: sticky;
-		top: 0;
-		z-index: 10;
+	.notice-bar {
+		background: var(--notice);
+		color: #3a2c00;
+		font-size: 0.85rem;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-		font-family: var(--mono);
-	}
-	.prompt-sym {
-		color: var(--accent);
-	}
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-		color: rgb(var(--black));
-	}
-	nav {
+	.notice-bar .container {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
+		gap: 0.6rem;
+		padding: 0.45rem 1.25rem;
 	}
-	.internal-links a {
-		font-family: var(--mono);
-		font-size: 0.9rem;
+	.notice-bar a {
+		color: #3a2c00;
+		font-weight: 700;
+		text-decoration: underline;
+	}
+	header {
+		background: rgb(var(--bg));
+		border-bottom: 1px solid rgb(var(--border));
+		box-shadow: var(--box-shadow);
+		position: sticky;
+		top: 0;
+		z-index: 20;
+	}
+	.header-inner {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		padding-top: 0.85rem;
+		padding-bottom: 0.85rem;
+	}
+	.brand {
+		font-size: 1.3rem;
+		font-weight: 800;
+		color: rgb(var(--heading));
+		white-space: nowrap;
+	}
+	.brand:hover {
+		text-decoration: none;
+		color: var(--accent);
+	}
+	nav {
+		flex: 1;
+	}
+	nav ul {
+		display: flex;
+		gap: 0.3rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	nav li {
+		margin: 0;
 	}
 	nav a {
-		padding: 1em 0.5em;
-		color: rgb(var(--gray-dark));
-		border-bottom: 2px solid transparent;
-		text-decoration: none;
+		display: block;
+		padding: 0.5rem 0.8rem;
+		color: rgb(var(--ink));
+		font-size: 0.95rem;
+		font-weight: 600;
+		border-radius: 4px;
 	}
-	nav a:hover {
-		color: var(--accent);
-	}
+	nav a:hover,
 	nav a.active {
+		color: var(--accent);
 		text-decoration: none;
-		color: var(--accent);
-		border-bottom-color: var(--accent);
+		background: rgb(var(--bg-soft));
 	}
-	.social-links,
-	.social-links a {
+	.search {
 		display: flex;
-		color: rgb(var(--gray));
+		align-items: center;
+		border: 1px solid rgb(var(--border));
+		border-radius: 4px;
+		overflow: hidden;
 	}
-	.social-links a:hover {
+	.search input {
+		border: none;
+		outline: none;
+		padding: 0.4rem 0.6rem;
+		font-size: 0.9rem;
+		width: 140px;
+	}
+	.search button {
+		border: none;
+		background: rgb(var(--bg-soft));
+		color: rgb(var(--gray));
+		padding: 0.45rem 0.6rem;
+		cursor: pointer;
+		display: flex;
+	}
+	.search button:hover {
 		color: var(--accent);
+	}
+	@media (max-width: 900px) {
+		.header-inner {
+			flex-wrap: wrap;
+			gap: 0.75rem;
+		}
+		.search {
+			order: 3;
+			flex: 1;
+		}
+		.search input {
+			width: 100%;
+		}
 	}
 	@media (max-width: 720px) {
-		.social-links {
-			display: none;
+		nav ul {
+			flex-wrap: wrap;
 		}
 	}
 </style>
