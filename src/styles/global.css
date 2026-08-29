@@ -121,8 +121,8 @@ hr { border: none; border-top: 1px solid rgb(var(--border)); margin: 2em 0; }
 
 .layout {
 	display: grid;
-	grid-template-columns: 1fr 21vw;
-	gap: 3vw;
+	grid-template-columns: 1fr 20vw;
+	gap: 2vw;
 	padding: 2rem 0 3rem;
 }
 .layout--single {
