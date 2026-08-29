@@ -34,6 +34,14 @@ body {
 	color: rgb(var(--ink));
 	font-size: 17px;
 	line-height: 1.7;
+	/* Sticky footer: fill at least the viewport height */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+/* Push the footer to the bottom: everything before it grows to fill space */
+body > footer {
+	margin-top: auto;
 }
 main { width: 100%; margin: 0; padding: 0; }
 h1, h2, h3, h4, h5, h6 {
@@ -113,6 +121,12 @@ hr { border: none; border-top: 1px solid rgb(var(--border)); margin: 2em 0; }
 	grid-template-columns: 1fr 320px;
 	gap: 2.5rem;
 	padding: 2rem 0 3rem;
+}
+.layout--single {
+	display: block;
+}
+.layout--single .article {
+	max-width: 820px;
 }
 .article { min-width: 0; }
 .sidebar { min-width: 0; }
