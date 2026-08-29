@@ -13,5 +13,5 @@ export const TAGLINE = 'Routing packets & automating the edge.';
 export const SOCIAL = {
 	github: 'https://github.com/chargyzuo',
 	linkedin: 'https://www.linkedin.com/',
-	email: 'mailto:hello@779260457.xyz',
+	email: 'mailto:hello@joshzuonet.cloud',
 };
