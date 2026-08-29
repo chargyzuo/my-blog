@@ -38,15 +38,10 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	/* Make room for the fixed left sidebar */
-	padding-left: 240px;
 }
 /* Push the footer to the bottom: everything before it grows to fill space */
 body > footer {
 	margin-top: auto;
-}
-@media (max-width: 900px) {
-	body { padding-left: 0; }
 }
 main { width: 100%; margin: 0; padding: 0; }
 h1, h2, h3, h4, h5, h6 {
