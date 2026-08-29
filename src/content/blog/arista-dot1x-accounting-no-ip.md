@@ -3,6 +3,7 @@ title: 'Arista 802.1X: No Client IP in Accounting'
 description: 'Why an Arista switch sends Framed-IP-Address 0.0.0.0 after a successful dot1x auth, and how address locking fixes it.'
 pubDate: 'Aug 29 2026'
 category: 'troubleshooting'
+tags: ['Arista', '802.1X', 'RADIUS', 'Accounting', 'EOS']
 ---
 
 ## 背景

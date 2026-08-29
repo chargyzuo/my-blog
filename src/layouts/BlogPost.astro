@@ -4,11 +4,12 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
 import { SITE_TITLE, CATEGORIES } from '../consts';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { id?: string };
 
-const { title, description, pubDate, updatedDate, category } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags, id } = Astro.props;
 const cat = CATEGORIES.find((c) => c.key === category);
 const catLabel = cat?.label ?? 'Blog';
 const catHref = cat ? `/category/${cat.slug}` : '/blog';
@@ -42,26 +43,7 @@ const catHref = cat ? `/category/${cat.slug}` : '/blog';
 					</p>
 					<slot />
 				</article>
-				<aside class="sidebar">
-					<div class="sidebar-box">
-						<h3>Course Contents</h3>
-						<div class="toc-group">
-							<p class="toc-title">Routing Fundamentals</p>
-							<ul>
-								<li><a href="/blog/welcome/">Welcome to netops.sh</a></li>
-								<li><a href="/blog/bgp-troubleshooting/">BGP Troubleshooting</a></li>
-								<li><a href="/blog/config-backup-netmiko/">Config Backup with Netmiko</a></li>
-							</ul>
-						</div>
-						<div class="toc-group">
-							<p class="toc-title">More</p>
-							<ul>
-								<li><a href="/blog">All Lessons</a></li>
-								<li><a href="/about">About Me</a></li>
-							</ul>
-						</div>
-					</div>
-				</aside>
+				<Sidebar tags={tags} currentId={id} />
 			</div>
 		</div>
 		<Footer />

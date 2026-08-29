@@ -4,6 +4,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
+import Sidebar from '../../components/Sidebar.astro';
 import { CATEGORIES, SITE_TITLE } from '../../consts';
 
 export async function getStaticPaths() {
@@ -35,7 +36,7 @@ const { cat, posts } = Astro.props;
 				<a href="/">Home</a> &raquo;
 				<span>{cat.label}</span>
 			</nav>
-			<div class="layout layout--single">
+			<div class="layout">
 				<article class="article">
 					<h1>{cat.label}</h1>
 					<p class="lede">{cat.blurb}</p>
@@ -59,6 +60,7 @@ const { cat, posts } = Astro.props;
 						)
 					}
 				</article>
+				<Sidebar currentId={undefined} />
 			</div>
 		</div>
 		<Footer />

@@ -3,6 +3,7 @@ title: 'BGP Troubleshooting Cheat Sheet'
 description: 'The commands and mental model I reach for when a BGP session misbehaves.'
 pubDate: 'Aug 05 2026'
 category: 'troubleshooting'
+tags: ['BGP', 'Routing', 'Troubleshooting']
 ---
 
 When a BGP session won't come up, I work through the state machine top-down:

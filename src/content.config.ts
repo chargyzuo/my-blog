@@ -18,6 +18,8 @@ const blog = defineCollection({
 			category: z
 				.enum(['notes', 'troubleshooting', 'automation', 'other'])
 				.default('notes'),
+			// Free-form topic tags shown on the article page.
+			tags: z.array(z.string()).optional(),
 		}),
 });
 

@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	tags?: string[];
+	currentId?: string;
+}
+
+const { tags, currentId } = Astro.props;
+
+const recent = (await getCollection('blog'))
+	.filter((p) => p.id !== currentId)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
+---
+
+<aside class="sidebar">
+	{
+		tags && tags.length > 0 && (
+			<div class="sidebar-box">
+				<h3>Tags</h3>
+				<ul class="tags">
+					{tags.map((t) => (
+						<li>{t}</li>
+					))}
+				</ul>
+			</div>
+		)
+	}
+	<div class="sidebar-box">
+		<h3>Recent Posts</h3>
+		<ul class="recent-list">
+			{
+				recent.map((post) => (
+					<li>
+						<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+						<p class="recent-date">
+							<FormattedDate date={post.data.pubDate} />
+						</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</aside>
