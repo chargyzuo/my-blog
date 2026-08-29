@@ -16,18 +16,6 @@ const recent = (await getCollection('blog'))
 ---
 
 <aside class="sidebar">
-	{
-		tags && tags.length > 0 && (
-			<div class="sidebar-box">
-				<h3>Tags</h3>
-				<ul class="tags">
-					{tags.map((t) => (
-						<li>{t}</li>
-					))}
-				</ul>
-			</div>
-		)
-	}
 	<div class="sidebar-box">
 		<h3>Recent Posts</h3>
 		<ul class="recent-list">
@@ -43,4 +31,16 @@ const recent = (await getCollection('blog'))
 			}
 		</ul>
 	</div>
+	{
+		tags && tags.length > 0 && (
+			<div class="sidebar-box">
+				<h3>Tags</h3>
+				<ul class="tags">
+					{tags.map((t) => (
+						<li>{t}</li>
+					))}
+				</ul>
+			</div>
+		)
+	}
 </aside>
