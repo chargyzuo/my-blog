@@ -4,11 +4,14 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, CATEGORIES } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const { title, description, pubDate, updatedDate, category } = Astro.props;
+const cat = CATEGORIES.find((c) => c.key === category);
+const catLabel = cat?.label ?? 'Blog';
+const catHref = cat ? `/category/${cat.slug}` : '/blog';
 ---
 
 <html lang="en">
@@ -21,7 +24,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 			<nav class="breadcrumb">
 				<span>You are here:</span>
 				<a href="/">Home</a> &raquo;
-				<a href="/blog">Lessons</a> &raquo;
+				<a href={catHref}>{catLabel}</a> &raquo;
 				<span>{title}</span>
 			</nav>
 			<div class="layout">
