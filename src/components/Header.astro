@@ -1,26 +1,21 @@
 ---
-import { SITE_TITLE, SOCIAL } from '../consts';
+import { CATEGORIES, SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
-
-<!-- Top notification bar -->
-<div class="notice-bar">
-	<div class="container">
-		<span>Free network engineering notes, labs &amp; troubleshooting guides.</span>
-		<a href={SOCIAL.github} target="_blank">Follow on GitHub &raquo;</a>
-	</div>
-</div>
 
 <header>
 	<div class="container header-inner">
 		<a href="/" class="brand">{SITE_TITLE}</a>
 		<nav>
 			<ul>
-				<li><HeaderLink href="/">Home</HeaderLink></li>
-				<li><HeaderLink href="/blog">Lessons</HeaderLink></li>
-				<li><HeaderLink href="/about">About</HeaderLink></li>
-				<li><a href={SOCIAL.github} target="_blank">GitHub</a></li>
-				<li><a href={SOCIAL.linkedin} target="_blank">LinkedIn</a></li>
+				<li><HeaderLink href="/">Josh Zuo</HeaderLink></li>
+				{
+					CATEGORIES.map((c) => (
+						<li>
+							<HeaderLink href={`/category/${c.slug}/`}>{c.label}</HeaderLink>
+						</li>
+					))
+				}
 			</ul>
 		</nav>
 		<form class="search" action="/blog">
@@ -35,23 +30,6 @@ import HeaderLink from './HeaderLink.astro';
 </header>
 
 <style>
-	.notice-bar {
-		background: var(--notice);
-		color: #3a2c00;
-		font-size: 0.85rem;
-	}
-	.notice-bar .container {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.6rem;
-		padding: 0.45rem 1.25rem;
-	}
-	.notice-bar a {
-		color: #3a2c00;
-		font-weight: 700;
-		text-decoration: underline;
-	}
 	header {
 		background: rgb(var(--bg));
 		border-bottom: 1px solid rgb(var(--border));

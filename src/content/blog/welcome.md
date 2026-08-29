@@ -2,6 +2,7 @@
 title: 'Welcome to netops.sh'
 description: 'Why I started this blog and what you can expect to find here.'
 pubDate: 'Aug 07 2026'
+category: 'notes'
 ---
 
 Welcome to **netops.sh** — my corner of the internet for everything networking.

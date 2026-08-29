@@ -2,6 +2,7 @@
 title: 'Automating Config Backups with Python + Netmiko'
 description: 'A tiny script that saves you from ever losing a device config again.'
 pubDate: 'Aug 01 2026'
+category: 'automation'
 ---
 
 Manual config backups don't scale. Here's a minimal, dependency-light way to

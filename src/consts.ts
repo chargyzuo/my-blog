@@ -15,3 +15,32 @@ export const SOCIAL = {
 	linkedin: 'https://www.linkedin.com/',
 	email: 'mailto:hello@joshzuonet.cloud',
 };
+
+// Navigation categories. `slug` maps to /category/<slug>/,
+// `key` matches the `category` field in each post's frontmatter.
+export const CATEGORIES = [
+	{
+		key: 'notes',
+		slug: 'notes',
+		label: 'Notes',
+		blurb: '学习笔记 · study notes from the CLI.',
+	},
+	{
+		key: 'troubleshooting',
+		slug: 'troubleshooting',
+		label: 'Troubleshooting',
+		blurb: '平时的排障案例 · real-world troubleshooting cases.',
+	},
+	{
+		key: 'automation',
+		slug: 'network-automation',
+		label: 'Network Automation',
+		blurb: '网络自动化目录 · scripts & automation write-ups.',
+	},
+	{
+		key: 'other',
+		slug: 'other',
+		label: 'Other',
+		blurb: '其他 · everything else.',
+	},
+] as const;

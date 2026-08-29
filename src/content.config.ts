@@ -14,6 +14,10 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			// Navigation category. Defaults to "notes" when omitted.
+			category: z
+				.enum(['notes', 'troubleshooting', 'automation', 'other'])
+				.default('notes'),
 		}),
 });
 
