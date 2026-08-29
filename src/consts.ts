@@ -22,7 +22,7 @@ export const CATEGORIES = [
 	{
 		key: 'notes',
 		slug: 'notes',
-		label: 'Notes',
+		label: 'Notes & Labs',
 		blurb: '学习笔记 · study notes from the CLI.',
 	},
 	{
